@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-lg-9
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th Имя
+            %th Номер
+            %th Пользователь
+            %th Кол-во заказов
+            %th До бесплатной
+            %th Действия
+        %tbody
+          - @customers.each do |customer|
+            %tr
+              %td=customer.name
+              %td=customer.number_code
+              %td=customer.user.name
+              %td=customer.payments_count
+              %td.text-info= 7 - customer.payments_count
+              %td
+                = link_to 'Новый Заказ', new_customer_payment_path(customer) ,class:'btn btn-xs btn-success'
+                = link_to 'Показать', customer_payments_path(customer) ,class:'btn btn-xs btn-success'

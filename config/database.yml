@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  username: alex
+  password: alexxxone89
+  host: localhost
+  database: auto_dev
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  username:
+  password:
+  database: auto_test
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  username:
+  password:
+  database: auto_prod

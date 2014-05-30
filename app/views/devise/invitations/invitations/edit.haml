@@ -1,0 +1,48 @@
+%body.login
+  .login
+    .logo
+    / END LOGO
+    / BEGIN LOGIN
+    .content_invitation
+      / BEGIN LOGIN FORM
+      = simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put,:class => "login-form" } do |f|
+        %h3.form-title
+          .text-warning.bold Sign Up
+        .alert.alert-success
+          %i.icon-check
+          You have Accepted the invitation from
+          = resource.invited_by.full_name
+        .alert.alert-error.hide
+          %button.close{"data-dismiss" => "alert"}
+          %span Enter your email and password.
+        .form-group
+          / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+          %label.control-label.visible-ie8.visible-ie9 Email
+          .input-icon
+            %i.icon-envelope
+            = f.email_field :email, :autofocus => true , :class => 'form-control placeholder-no-fix', :disabled => :disabled, autocomplete: "off", placeholder: "Email", type: "email"
+        .form-group
+          %label.control-label.visible-ie8.visible-ie9 Password
+          .input-icon
+            %i.icon-lock
+            = f.password_field :password, :class => "form-control placeholder-no-fix", autocomplete: "off", placeholder: "Password", type: "password"
+            = f.hidden_field :invitation_token
+        .form-group
+          %label.control-label.visible-ie8.visible-ie9 Password
+          .input-icon
+            %i.icon-lock
+            = f.password_field :password_confirmation, :class => "form-control placeholder-no-fix", autocomplete: "off", placeholder: "Password Confirmation", type: "password"
+        .form-group
+          / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+          %label.control-label.visible-ie8.visible-ie9 Full Name
+          .input-icon
+            %i.icon-envelope
+            = f.text_field :full_name, :autofocus => true , :class => 'form-control placeholder-no-fix', autocomplete: "off", placeholder: "Full Name", type: "text"
+        .form-actions
+          = f.submit t("devise.invitations.edit.submit_button"),:class => 'btn btn-success pull-right'
+
+:javascript
+jQuery(document).ready(function() {
+  Login.init();
+});
+

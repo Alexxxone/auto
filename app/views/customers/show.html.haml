@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-lg-6.col-lg-offset-2
+      %p
+        %b Имя:
+        = @customer.name
+      %p
+        %b Пользователь:
+        = @customer.user.name
+      %p
+        %b Кол-во заказов:
+        = @customer.payments_count
+
+      = link_to 'Edit', edit_customer_path(@customer)
+      = link_to 'Back', customers_path

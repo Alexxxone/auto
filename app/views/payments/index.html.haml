@@ -1,0 +1,42 @@
+.container
+  .row
+    .col-lg-9
+      %h1
+        Список Оплат Клиента
+        %span.text-success
+          = @customer.name
+      %hr
+      %h3
+        Всего -
+        =@customer.payments_count
+      %h3
+        До бесплатной осталось -
+
+        %span.text-success
+          = 7 - @customer.payments_count
+      %hr
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th Имя
+            %th Номер
+            %th Пользователь
+            %th Сумма (грн)
+            %th Описание
+            %th Действия
+        %tbody
+          - @customer.payments.each do |payment|
+            %tr
+              %td= payment.customer.name
+              %td= payment.customer.number_code
+              %td= payment.user.name
+              %td= payment.amount/100.00
+              %td= payment.description
+              %td= link_to 'Show', customer_payments_path(payment) ,class:'btn btn-xs btn-success'
+              %td= link_to 'Edit', edit_customers_payment_path(@customer,payment) ,class:'btn btn-xs btn-warning'
+              %td= link_to 'Destroy',customers_payment_path(payment ) ,class:'btn btn-xs btn-danger' , :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'Новый Заказ', new_customer_payment_path, class: 'btn btn-success'
+      = link_to 'Назад', customers_path, class: 'btn btn-info'
