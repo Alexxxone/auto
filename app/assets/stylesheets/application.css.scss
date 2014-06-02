@@ -17,6 +17,10 @@ body{
   li{
     padding: 10px 20px;
     background-color: #DF691A;
+    &:hover{
+      background-color: #5BC0DE;
+      color: #FFF;
+    }
     a,button{
       margin-left: 5px;
     }

@@ -1,6 +1,11 @@
 .container
   .row
-    .col-lg-9
+    .col-md-3.col-md-offset-3
+      =link_to 'Новый Заказчик', new_customer_path, class: 'btn btn-success'
+    .col-md-9
+      %hr
+  .row
+    .col-md-9
       %table.table.table-striped.table-hover
         %thead
           %tr
@@ -24,4 +29,5 @@
                 %td.text-info= customer.free_payment_left
               %td
                 = link_to 'Новый Заказ', new_customer_payment_path(customer) ,class:'btn btn-xs btn-success'
-                = link_to 'Показать', customer_payments_path(customer) ,class:'btn btn-xs btn-success'
+                = link_to 'Показать', customer_payments_path(customer) ,class:'btn btn-xs btn-info'
+                = link_to 'Редактировать', edit_customer_path(customer) ,class:'btn btn-xs btn-warning'
