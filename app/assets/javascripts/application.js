@@ -15,8 +15,6 @@
 //= require bootstrap
 //= require jquery.validate.min
 //= require login
-//= require_tree .
-
 
 
 $(document).ready(function(){
