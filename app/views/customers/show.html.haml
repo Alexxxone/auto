@@ -10,6 +10,8 @@
       %p
         %b Кол-во заказов:
         = @customer.payments_count
-
+      %p
+        %b До бесплатной осталось:
+        = @customer.free_payment_left
       = link_to 'Edit', edit_customer_path(@customer)
       = link_to 'Back', customers_path

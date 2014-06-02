@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
-  before_action :set_customer, only: [:index, :show, :new]
-
+  before_action :set_customer, only: [:index, :show, :new, :create]
+  before_action :any_free?, only: [:index,:show, :new]
 
   def index
   end
@@ -21,7 +21,6 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.user_id = current_user.id
-    logger.info @payment.customer
     respond_to do |format|
       if @payment.save
         format.html { redirect_to  @payment.customer, notice: 'Payment was successfully created.' }
@@ -49,7 +48,7 @@ class PaymentsController < ApplicationController
   def destroy
     @payment.destroy
     respond_to do |format|
-      format.html { redirect_to payments_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -63,5 +62,10 @@ class PaymentsController < ApplicationController
     end
     def payment_params
       params.require(:payment).permit(:customer_id, :user_id, :amount, :description)
+    end
+    def any_free?
+      if @customer.next_free?
+        @free = 'ЭТА МОЙКА БЕСПЛАТНАЯ'
+      end
     end
 end

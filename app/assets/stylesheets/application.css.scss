@@ -4,7 +4,28 @@
 @import "bootswatch.min";
 @import "login";
 @import "customers";
+@import "payments";
 
 body{
   padding-top: 250px;
+}
+.response_box{
+  display: none;
+  position: absolute;
+  top:50px;
+  list-style: none;
+  li{
+    padding: 10px 20px;
+    background-color: #DF691A;
+    a,button{
+      margin-left: 5px;
+    }
+
+  }
+  a{
+
+    cursor: pointer;
+    color:#2B3E50;
+    text-decoration: underline;
+  }
 }

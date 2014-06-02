@@ -1,3 +1,7 @@
+-if @free
+  .alert.alert-info.free-car-wash
+    %button.close{type:'button', 'data-dismiss'=>'alert'}  ×
+    =@free
 %p#notice= notice
 
 %p
@@ -8,11 +12,11 @@
   = @payment.user_id
 %p
   %b Amount:
-  = @payment.amount
+  = @payment.amount/100.00
 %p
   %b Description:
   = @payment.description
 
-= link_to 'Edit', edit_payment_path(@payment)
+= link_to 'Edit', edit_customer_payment_path(@payment.customer, @payment)
 \|
-= link_to 'Back', payments_path
+= link_to 'Back', customer_payments_path(@payment.customer)

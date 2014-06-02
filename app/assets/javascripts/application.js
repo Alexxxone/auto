@@ -26,4 +26,28 @@ $(document).ready(function(){
         },3000)
 
     }
+    $('.search_query').keyup(function(){
+        var number_code = this.value;
+        window.setTimeout(function(){
+            var box = $('.response_box');
+            console.log(number_code);
+            box.hide();
+            $.ajax({
+                url:'/find_number_code',
+                dataType:'json',
+                type: 'post',
+                data: {number_code: number_code}
+            }).success(function(response){
+                build_response_box(response,box);
+            });
+        },500)
+    });
+
 });
+function build_response_box(response,box){
+
+    box.empty().show();
+    response.forEach(function(v,i){
+        box.append("<li><a href='/customers/"+ v.id+"/payments'>"+ v.number_code +"</a><a class='btn btn-xs btn-success' type='button' href='/customers/"+ v.id+"/payments/new'>Новый Заказ</a> "+v.name+"</li>")
+    })
+}

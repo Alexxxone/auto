@@ -2,7 +2,7 @@
   .header-inner
     %a.text-center.navbar-brand{href: root_path,:style => 'line-height:15px;'} Auto.com
     %form.navbar-form.navbar-left{style:'margin-left: 250px;'}
-      %input.form-control.col-lg-8{type: 'text', placeholder:'Поиск по номерам'}
+      %input.form-control.col-lg-8.search_query{type: 'text', placeholder:'Поиск по номерам'}
     %ul.nav.navbar-nav.pull-right
       %li
         %a.username{href: "javascript:;"}
@@ -16,5 +16,6 @@
           = link_to destroy_user_session_path, :method => :delete    do
             %i.icon-key
             Выйти
+%ul.response_box.col-lg-2.col-lg-offset-2
 
 

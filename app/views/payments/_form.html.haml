@@ -1,4 +1,4 @@
-= form_for [@customer, @payment], html:{class:'form-horizontal'} do |f|
+= form_for [@payment.customer, @payment], html:{class:'form-horizontal'} do |f|
 
   - if @payment.errors.any?
     #error_explanation
@@ -7,16 +7,22 @@
         - @payment.errors.full_messages.each do |msg|
           %li= msg
   .form-group
-    = f.hidden_field :customer_id, value: params[:customer_id]
+    = f.hidden_field :customer_id, value: @customer.id
     %label.col-lg-2.control-label{for: 'amount'}
       = f.label 'Сумма'
     .col-lg-10
-      = f.number_field :amount, placeholder: 'Внесенная Сумма' , class:'form-control'
+      -if @customer.next_free?
+        = f.number_field :amount, placeholder: 'Внесенная Сумма' , class:'form-control', value: 0, readonly: true
+      -else
+        = f.number_field :amount, placeholder: 'Внесенная Сумма' , class:'form-control',value: 0
+
   .form-group
     %label.col-lg-2.control-label{for: 'description'}
       = f.label 'Описание Услуги'
     .col-lg-10
       = f.text_area :description , placeholder: 'Описание Услуги' , class:'form-control'
+      %span.help-block
+        Минимальная длинна 6, максимальная - 220 символов
   .form-group
     = f.submit 'Сохранить', class: 'btn btn-success'
     = link_to 'Назад', customer_payments_path, class:'btn btn-warning'

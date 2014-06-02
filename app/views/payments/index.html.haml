@@ -1,3 +1,7 @@
+-if @free
+  .alert.alert-info.free-car-wash
+    %button.close{type:'button', 'data-dismiss'=>'alert'}  ×
+    =@free
 .container
   .row
     .col-lg-9
@@ -13,7 +17,7 @@
         До бесплатной осталось -
 
         %span.text-success
-          = 7 - @customer.payments_count
+          = @customer.free_payment_left
       %hr
       %table.table.table-striped.table-hover
         %thead
@@ -32,9 +36,9 @@
               %td= payment.user.name
               %td= payment.amount/100.00
               %td= payment.description
-              %td= link_to 'Show', customer_payments_path(payment) ,class:'btn btn-xs btn-success'
-              %td= link_to 'Edit', edit_customers_payment_path(@customer,payment) ,class:'btn btn-xs btn-warning'
-              %td= link_to 'Destroy',customers_payment_path(payment ) ,class:'btn btn-xs btn-danger' , :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %td= link_to 'Show', customer_payment_path(@customer,payment) ,class:'btn btn-xs btn-success'
+              %td= link_to 'Edit', edit_customer_payment_path(@customer,payment) ,class:'btn btn-xs btn-warning'
+              %td= link_to 'Destroy',customer_payment_path(@customer, payment ) ,class:'btn btn-xs btn-danger' , :method => :delete, :data => { :confirm => 'Are you sure?' }
 
       %br
 

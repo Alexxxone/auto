@@ -41,16 +41,13 @@
 #end
 
 User.delete_all
-user1 = User.create!(email: 'a@mail.ru', name: 'Alex', password: 123123123, password_confirmation: 123123123)
-user2 = User.create!(email: 'b@mail.ru', name: 'Boba', password: 123123123, password_confirmation: 123123123)
+User.create!(email: 'a@mail.ru', name: 'Alex', password: 123123123, password_confirmation: 123123123)
+User.create!(email: 'b@mail.ru', name: 'Boba', password: 123123123, password_confirmation: 123123123)
 
-#  Customer
-#t.integer  "user_id"
-#t.string   "number_code"
-#t.string   "name"
-Customer.create!(user_id: user1.id, number_code: 'ak1234 ab', name: 'Абдула')
-Customer.create!(user_id: user1.id, number_code: 'BT 1415 CA', name: 'василий')
-Customer.create!(user_id: user2.id, number_code: 'ak 4122 ab', name: 'дмитрий')
+
+#Customer.create!(user_id: user1.id, number_code: 'ak1234 ab', name: 'Абдула')
+#Customer.create!(user_id: user1.id, number_code: 'BT 1415 CA', name: 'василий')
+#Customer.create!(user_id: user2.id, number_code: 'ak 4122 ab', name: 'дмитрий')
 
 
 
