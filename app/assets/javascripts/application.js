@@ -46,6 +46,6 @@ function build_response_box(response,box){
 
     box.empty().show();
     response.forEach(function(v,i){
-        box.append("<li><a href='/customers/"+ v.id+"/payments'>"+ v.number_code +"</a><a class='btn btn-xs btn-success' type='button' href='/customers/"+ v.id+"/payments/new'>Новый Заказ</a> "+v.name+"</li>")
+        box.append("<li><a href='/customers/"+ v.id+"/payments'>"+ v.number_code +"</a><a class='btn btn-xs btn-success pull-right' type='button' href='/customers/"+ v.id+"/payments/new'>Новый Заказ</a> "+v.name+"</li>")
     })
 }
