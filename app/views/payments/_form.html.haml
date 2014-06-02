@@ -15,7 +15,8 @@
         = f.number_field :amount, placeholder: 'Внесенная Сумма' , class:'form-control', value: 0, readonly: true
       -else
         = f.number_field :amount, placeholder: 'Внесенная Сумма' , class:'form-control',value: 0
-
+      %span.help-block
+        Записывать в формате: "600" = 6грн, "1550" = 15.50 грн
   .form-group
     %label.col-lg-2.control-label{for: 'description'}
       = f.label 'Описание Услуги'

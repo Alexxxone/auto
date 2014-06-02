@@ -11,6 +11,8 @@
       = f.label 'Номер Авто'
     .col-lg-10
       = f.text_field :number_code, placeholder: 'Номер' , class:'form-control'
+      %span.help-block
+        Только английские буквы. Пример: 'ap1234ka'
   .form-group
     %label.col-lg-2.control-label{for: 'name'}
       = f.label 'Имя Заказчика'
